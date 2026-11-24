@@ -1,8 +1,303 @@
-/*
+html {
+	--text-normal: white;
+	--text-faint: gray;
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+	--background-primary: black;
+	--background-secondary: black;
+	--background-modifier-border: darkgray;
+	--background-modifier-hover: gray;
+	--text-selection: gray;
 
-If your plugin does not need CSS, delete this file.
+	--radius-s: 4px;
+	--shadow-s: 0px 0px 0px black;
 
-*/
+	--font-text-size: 16px;
+	--font-size-editor: 16px;
+	--font-monospace: monospace;
+}
+
+.workspace-leaf-content[data-type="latex-view"] > .view-content, .workspace-leaf-content[data-type="typst-view"] > .view-content {
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+
+	margin: 0;
+}
+
+.typesetting-workspace {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	flex-direction: column;
+
+	.typesetting-workspace-toolbar {
+		display: flex;
+		width: 100%;
+		height: 5%;
+
+		border-bottom: 1px solid var(--background-modifier-border);
+		align-items: center;
+
+		justify-content: space-between;
+
+		.toolbar-editor, .toolbar-preview  {
+			width: 49%;
+			height: 100%;
+
+			padding: 4px 24px;
+
+			display: flex;
+			align-items: center;
+		}
+
+		.toolbar-preview {
+			width: 51%;
+		}
+
+		.toolbar-editor {
+			display: flex;
+			justify-content: space-between;
+			.tools {
+				display: flex;
+				width: 100%;
+				height: 100%;
+				gap: 8px;
+
+				align-items: center;
+				button {
+					height: 90%;
+					padding: 0;
+					aspect-ratio: 1/1;
+
+					background: transparent;
+
+					&:hover {
+						background-color: var(--background-modifier-hover);
+					}
+				}
+
+				hr {
+					margin: 0 4px;
+					width: 2px;
+					background: var(--background-modifier-border);
+					height: 80%;
+					border-radius: 2px;
+				}
+			}
+
+			.word-count {
+				font-size: 1rem;
+				flex-shrink: 0;
+			}
+		}
+
+		.toolbar-preview {
+			.setting {
+				display: flex;
+				align-items: center;
+
+				font-size: 0.7rem;
+			}
+		}
+	}
+
+	.typesetting-workspace-main {
+		width: 100%;
+		height: 95%;
+
+		display: flex;
+	}
+
+}
+
+.typesetting-editor-panel,
+.typesetting-preview-panel {
+	box-sizing: border-box;
+	display: flex;
+	flex: 1;
+	min-width: 0;
+	min-height: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+.typesetting-editor-panel {
+	border-right: 1px solid var(--background-modifier-border);
+}
+
+.latex-editor-view, .typst-editor-view {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	color: var(--text-normal);
+	font-family: var(--font-monospace), monospace;
+	font-size: var(--font-size-editor, var(--font-text-size, 16px));
+
+	.cm-editor {
+		height: 100%;
+		outline: none;
+		border: none;
+		box-shadow: none;
+
+		color: var(--text-normal);
+		font-family: inherit;
+	}
+
+	.cm-scroller {
+		overflow: auto;
+		padding: 20px 32px;
+		font-family: inherit;
+	}
+
+	.cm-content {
+		min-height: 100%;
+		padding: 0;
+		caret-color: var(--text-normal);
+	}
+
+	.cm-line {
+		padding: 0;
+	}
+
+	.cm-gutters {
+		background: transparent;
+		border: none;
+		color: var(--text-faint);
+	}
+
+	.cm-lineNumbers .cm-gutterElement {
+		padding-right: 12px;
+		color: var(--text-faint);
+	}
+
+	.cm-activeLine,
+	.cm-activeLineGutter {
+		background: var(--background-modifier-hover);
+	}
+
+	.cm-selectionBackground {
+		background: var(--text-selection) !important;
+	}
+
+	.cm-cursor {
+		border-left-color: var(--text-normal);
+	}
+
+	.cm-tooltip {
+		background-color: var(--background-secondary);
+		color: var(--text-normal);
+		border: 1px solid var(--background-modifier-border);
+		border-radius: var(--radius-s);
+		box-shadow: var(--shadow-s);
+	}
+
+	.cm-tooltip-hover {
+		padding: 10px;
+	}
+
+	.cm-tooltip-section:not(:first-child) {
+		border-top: 1px solid var(--background-modifier-border);
+	}
+}
+
+.typesetting-preview-panel {
+	overflow: auto;
+	padding: 0.5rem;
+	background: var(--background-primary);
+}
+
+.typesetting-preview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+	overflow: visible;
+
+	canvas {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+
+/* Search Panel */
+.cm-panels {
+	background: var(--background-secondary);
+	color: var(--text-normal);
+}
+
+.cm-panels-top {
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.cm-search {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	padding: 10px 12px;
+	font-family: var(--font-interface);
+	font-size: var(--font-ui-small);
+}
+
+.cm-search label {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.cm-search input {
+	width: 180px;
+	height: 28px;
+	padding: 4px 8px;
+
+	background: var(--background-primary);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	outline: none;
+}
+
+.cm-search input:focus {
+	border-color: var(--interactive-accent);
+}
+
+.cm-search button {
+	height: 28px;
+	padding: 4px 10px;
+
+	background: var(--background-primary);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	cursor: pointer;
+}
+
+.cm-search button:hover {
+	background: var(--background-modifier-hover);
+}
+
+.cm-search button:active {
+	background: var(--background-modifier-active);
+}
+
+.cm-search button[name="close"] {
+	margin-left: auto;
+}
+
+.cm-searchMatch {
+	background: var(--text-highlight-bg);
+}
+
+.cm-searchMatch-selected {
+	background: var(--text-accent);
+	color: var(--text-on-accent);
+}

@@ -14,7 +14,7 @@ const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ['src/main.ts'],
+	entryPoints: ['src/TexEdit.ts'],
 	bundle: true,
 	external: [
 		'obsidian',
@@ -30,6 +30,8 @@ const context = await esbuild.context({
 		'@lezer/common',
 		'@lezer/highlight',
 		'@lezer/lr',
+		'node:child_process',
+		"node:path",
 		...builtinModules,
 	],
 	format: 'cjs',
