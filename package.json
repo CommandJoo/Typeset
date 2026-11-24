@@ -1,6 +1,6 @@
 {
 	"name": "typeset",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Adds a split view LaTeX and Typst Editor.",
 	"main": "main.js",
 	"type": "module",
@@ -16,8 +16,8 @@
 		"@codemirror/view": "^6.43.13",
 		"@eslint/js": "^9.39.4",
 		"@types/node": "^22.15.17",
-		"@types/react": "^19.3.0",
-		"@types/react-dom": "^19.3.0",
+		"@types/react": "^18.3.31",
+		"@types/react-dom": "^18.3.7",
 		"esbuild": "0.25.5",
 		"eslint": "^9.39.4",
 		"eslint-plugin-obsidianmd": "^0.6.0",
@@ -41,7 +41,7 @@
 		"lucide": "^1.75.0",
 		"lucide-react": "^1.75.0",
 		"pdfjs-dist": "^6.5.438",
-		"react": "^19.3.1",
-		"react-dom": "^19.3.1"
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
 	}
 }

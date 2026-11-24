@@ -6,7 +6,13 @@ html {
 	--background-secondary: black;
 	--background-modifier-border: darkgray;
 	--background-modifier-hover: gray;
+	--background-modifier-active: lightgray;
 	--text-selection: gray;
+
+	--interactive-accent: blue;
+
+	--font-interface: sans-serif;
+	--font-ui-small: 16px;
 
 	--radius-s: 4px;
 	--shadow-s: 0px 0px 0px black;
@@ -14,6 +20,10 @@ html {
 	--font-text-size: 16px;
 	--font-size-editor: 16px;
 	--font-monospace: monospace;
+
+	--text-highlight-bg: white;
+	--text-accent: white;
+	--text-on-accent: white;
 }
 
 .workspace-leaf-content[data-type="latex-view"] > .view-content, .workspace-leaf-content[data-type="typst-view"] > .view-content {
@@ -178,7 +188,7 @@ html {
 	}
 
 	.cm-selectionBackground {
-		background: var(--text-selection) !important;
+		background: var(--text-selection);
 	}
 
 	.cm-cursor {
