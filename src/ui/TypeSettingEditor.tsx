@@ -16,8 +16,7 @@ import {
 	List, ListOrdered, Quote
 } from 'lucide-react';
 
-import {pdfPath, renderPdfPages} from "../util/TypeSettingCompiler";
-import {countWrittenLatexWords} from "../util/util";
+import {countPdfWords, pdfPath, renderPdfPages} from "../util/TypeSettingCompiler";
 import {LatexEditor} from "./LatexEditor";
 import {TypstEditor} from "./TypstEditor";
 
@@ -38,7 +37,9 @@ export function TypeSettingPreview({revision}: { revision: number }) {
 
 export function TypeSettingRenderer({lang}: { lang: string }) {
 	const [revision, setRevision] = useState(0);
-	const {livePreview, setLivePreview, editor, source} = useLatex();
+	const {app, file, livePreview, setLivePreview, editor} = useLatex();
+
+	const [wordcount, setWordcount] = useState(0);
 
 	const wrapSelection = useCallback((before: string, after: string) => {
 		if (!editor) return;
@@ -58,6 +59,14 @@ export function TypeSettingRenderer({lang}: { lang: string }) {
 		);
 		editor.focus();
 	}, [editor]);
+
+	useEffect(() => {
+		async function load() {
+			if(!file) return;
+			setWordcount(await countPdfWords(app, pdfPath(file)));
+		}
+		void load();
+	}, [file, revision]);
 
 	return <div key={lang} className={"typesetting-workspace"}>
 		<div className={"typesetting-workspace-toolbar"} onMouseDown={(e) => e.preventDefault()}>
@@ -125,7 +134,7 @@ export function TypeSettingRenderer({lang}: { lang: string }) {
 						}}><Quote/></button>
 					</div>
 					<div className={"word-count"}>
-						{countWrittenLatexWords(source)} Words
+						{wordcount} Words
 					</div>
 				</> : ""}
 				{lang === "typst" ? <>
@@ -191,7 +200,7 @@ export function TypeSettingRenderer({lang}: { lang: string }) {
 						}}><Quote/></button>
 					</div>
 					<div className={"word-count"}>
-						{countWrittenLatexWords(source)} Words
+						{wordcount} Words
 					</div>
 				</> : ""}
 			</div>

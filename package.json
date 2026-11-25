@@ -1,6 +1,6 @@
 {
 	"name": "typeset",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Adds a split view LaTeX and Typst Editor.",
 	"main": "main.js",
 	"type": "module",
@@ -15,7 +15,7 @@
 	"devDependencies": {
 		"@codemirror/view": "^6.43.13",
 		"@eslint/js": "^9.39.4",
-		"@types/node": "^22.15.17",
+		"@types/node": "^22.20.6",
 		"@types/react": "^18.3.31",
 		"@types/react-dom": "^18.3.7",
 		"esbuild": "0.25.5",

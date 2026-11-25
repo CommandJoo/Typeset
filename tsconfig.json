@@ -17,6 +17,7 @@
 			"ES2021",
 			"DOM"
 		],
+		"types": ["node"],
 		"jsx": "react-jsx"
 	},
 	"include": [

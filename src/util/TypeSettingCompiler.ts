@@ -5,6 +5,34 @@ import path from "path"
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import "pdfjs-dist/legacy/build/pdf.worker.mjs";
 
+export async function countPdfWords(
+	app: App,
+	pdfPath: string,
+) {
+	const data = new Uint8Array(
+		await app.vault.adapter.readBinary(pdfPath)
+	);
+
+	const loadingTask = pdfjsLib.getDocument({ data });
+
+	let words = 0;
+	try {
+		const doc = await loadingTask.promise;
+		for (let i = 1; i <= doc.numPages; i++) {
+			const page = await doc.getPage(i);
+			const { items } = await page.getTextContent();
+			let text = items.map((it) => ('str' in it ? it.str + (it.hasEOL ? '\n' : ' ') : '')).join('');
+			words += text
+				.split(/\s+/)
+				.map((t) => t.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))
+				.filter(Boolean).length;
+		}
+	} finally {
+		await loadingTask.destroy();
+	}
+	return words;
+}
+
 export async function renderPdfPages(
 	app: App,
 	pdfPath: string,
