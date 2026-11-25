@@ -14,7 +14,7 @@ const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ['src/TexEdit.ts'],
+	entryPoints: ['src/Typeset.ts'],
 	bundle: true,
 	external: [
 		'obsidian',

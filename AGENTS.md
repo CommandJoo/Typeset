@@ -3,7 +3,7 @@
 ## Project overview
 
 - Target: Obsidian Community Plugin (TypeScript → bundled JavaScript).
-- Entry point: `src/TexEdit.ts` compiled to `main.js` and loaded by Obsidian.
+- Entry point: `src/Typeset.ts` compiled to `main.js` and loaded by Obsidian.
 - Required release artifacts: `main.js`, `manifest.json`, and optional `styles.css`.
 
 ## Environment & tooling
@@ -41,13 +41,13 @@ npm run build
 
 ## File & folder conventions
 
-- **Organize code into multiple files**: Split functionality across separate modules rather than putting everything in `TexEdit.ts`.
-- Source lives in `src/`. Keep `TexEdit.ts` small and focused on plugin lifecycle (loading, unloading, registering commands).
+- **Organize code into multiple files**: Split functionality across separate modules rather than putting everything in `Typeset.ts`.
+- Source lives in `src/`. Keep `Typeset.ts` small and focused on plugin lifecycle (loading, unloading, registering commands).
 - **Example file structure**:
     ```
     src/
-      TexEdit.ts           # Plugin entry point, lifecycle management
-      TexEditSettings.ts       # Settings interface and defaults
+      Typeset.ts           # Plugin entry point, lifecycle management
+      TypesetSettings.ts       # Settings interface and defaults
       commands/         # Command implementations
         command1.ts
         command2.ts
@@ -130,7 +130,7 @@ Follow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particula
 ## Coding conventions
 
 - TypeScript with `"strict": true` preferred.
-- **Keep `TexEdit.ts` minimal**: Focus only on plugin lifecycle (onload, onunload, addCommand calls). Delegate all feature logic to separate modules.
+- **Keep `Typeset.ts` minimal**: Focus only on plugin lifecycle (onload, onunload, addCommand calls). Delegate all feature logic to separate modules.
 - **Split large files**: If any file exceeds ~200-300 lines, consider breaking it into smaller, focused modules.
 - **Use clear module boundaries**: Each file should have a single, well-defined responsibility.
 - Bundle everything into `main.js` (no unbundled runtime deps).
@@ -162,7 +162,7 @@ Follow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particula
 
 ### Organize code across multiple files
 
-**TexEdit.ts** (minimal, lifecycle only):
+**Typeset.ts** (minimal, lifecycle only):
 
 ```ts
 import { Plugin } from 'obsidian';
@@ -183,7 +183,7 @@ export default class MyPlugin extends Plugin {
 }
 ```
 
-**TexEditSettings.ts**:
+**TypesetSettings.ts**:
 
 ```ts
 export interface MySettings {

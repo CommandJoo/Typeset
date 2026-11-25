@@ -15,7 +15,7 @@ import {useLatex} from "../util/TypeSettingContext";
 import {compileTypst} from "../util/TypeSettingCompiler";
 import {typst_lezer} from "codemirror-lang-typst/lezer"
 import {useCallback, useEffect, useRef} from "react";
-import {useSettings} from "../TexEditSettings";
+import {useSettings} from "../TypesetSettings";
 
 export function TypstEditor({onCompiled}: { onCompiled: () => void }) {
 	const containerRef = useRef<HTMLDivElement>(null);

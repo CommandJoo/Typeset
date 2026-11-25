@@ -1,7 +1,7 @@
 import {createContext, ReactNode, useContext, useEffect, useRef, useState} from "react";
 import {App, TFile} from "obsidian";
 import {EditorView} from "@codemirror/view";
-import {useSettings} from "../TexEditSettings";
+import {useSettings} from "../TypesetSettings";
 
 export type TypeSettingContextType = {
 	app: App;

@@ -1,8 +1,8 @@
 import {App, PluginSettingTab, SettingDefinitionItem} from 'obsidian';
-import TexEdit from './TexEdit';
+import Typeset from './Typeset';
 import {createContext, useContext, useSyncExternalStore} from "react";
 
-export interface TexEditSettings {
+export interface TypesetSettings {
 	livePreview: boolean;
 	lineWrapping: boolean;
 
@@ -11,7 +11,7 @@ export interface TexEditSettings {
 	debounceTime: number;
 }
 
-export const DEFAULT_SETTINGS: TexEditSettings = {
+export const DEFAULT_SETTINGS: TypesetSettings = {
 	livePreview: true,
 	lineWrapping: true,
 
@@ -39,17 +39,17 @@ export class ConfigStore<T> {
 	}
 }
 
-export const StoreContext = createContext<ConfigStore<TexEditSettings>>(null!);
+export const StoreContext = createContext<ConfigStore<TypesetSettings>>(null!);
 
 export function useSettings() {
 	const store = useContext(StoreContext);
 	return useSyncExternalStore(store.subscribe, store.get);
 }
 
-export class TexEditSettingsTab extends PluginSettingTab {
-	plugin: TexEdit;
+export class TypesetSettingsTab extends PluginSettingTab {
+	plugin: Typeset;
 
-	constructor(app: App, plugin: TexEdit) {
+	constructor(app: App, plugin: Typeset) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -120,7 +120,7 @@ export class TexEditSettingsTab extends PluginSettingTab {
 	}
 
 
-	getControlValue<K extends keyof TexEditSettings>(key: K): TexEditSettings[K] {
+	getControlValue<K extends keyof TypesetSettings>(key: K): TypesetSettings[K] {
 		return this.plugin.settings.get()[key];
 	}
 

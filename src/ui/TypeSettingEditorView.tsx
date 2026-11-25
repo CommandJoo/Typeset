@@ -1,17 +1,17 @@
 import {TextFileView, TFile, WorkspaceLeaf} from "obsidian";
-import TexEdit, {VIEW_TYPE_LATEX, VIEW_TYPE_TYPST} from "../TexEdit";
+import Typeset, {VIEW_TYPE_LATEX, VIEW_TYPE_TYPST} from "../Typeset";
 import {createRoot, Root} from "react-dom/client";
 import {StrictMode} from "react";
 import {TypeSettingRenderer} from "./TypeSettingEditor";
 import {TypeSettingProvider} from "../util/TypeSettingContext";
-import {StoreContext} from "../TexEditSettings";
+import {StoreContext} from "../TypesetSettings";
 
 export class LatexEditorView extends TextFileView {
-	plugin: TexEdit;
+	plugin: Typeset;
 	root: Root | null = null;
 	data: string = "";
 
-	constructor(leaf: WorkspaceLeaf, plugin: TexEdit) {
+	constructor(leaf: WorkspaceLeaf, plugin: Typeset) {
 		super(leaf);
 		this.plugin = plugin;
 	}
@@ -84,11 +84,11 @@ export class LatexEditorView extends TextFileView {
 }
 
 export class TypstEditorView extends TextFileView {
-	plugin: TexEdit;
+	plugin: Typeset;
 	root: Root | null = null;
 	data: string = "";
 
-	constructor(leaf: WorkspaceLeaf, plugin: TexEdit) {
+	constructor(leaf: WorkspaceLeaf, plugin: Typeset) {
 		super(leaf);
 		this.plugin = plugin;
 	}

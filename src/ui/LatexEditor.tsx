@@ -14,7 +14,7 @@ import {useLatex} from "../util/TypeSettingContext";
 import {compileLatex} from "../util/TypeSettingCompiler";
 import {latex} from "codemirror-lang-latex"
 import {useCallback, useEffect, useRef} from "react";
-import {useSettings} from "../TexEditSettings";
+import {useSettings} from "../TypesetSettings";
 
 export function LatexEditor({onCompiled}: { onCompiled: () => void }) {
 	const containerRef = useRef<HTMLDivElement>(null);

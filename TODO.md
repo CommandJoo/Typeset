@@ -1,9 +1,7 @@
 # Settings
 
-# General Features
-- Add Commands for creating the formats
-
 # Editor Features
+- File rename in Editor
 - Custom theme Colors
 - Wordcount (typst)
 
