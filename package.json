@@ -1,6 +1,6 @@
 {
 	"name": "typeset",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Adds a split view LaTeX and Typst Editor.",
 	"main": "main.js",
 	"type": "module",
